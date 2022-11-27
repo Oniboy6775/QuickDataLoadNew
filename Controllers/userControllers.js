@@ -118,17 +118,6 @@ const register = async (req, res) => {
       },
     });
     if (referredBy) newReferral(req.body);
-    // await sendEmail(
-    //   email,
-    //   "Registration Successful",
-    //   {
-    //     name: fullName,
-    //     link: process.env.FRONTEND_URL,
-    //     businessName: process.env.BUSINESS_NAME,
-    //     userName: userName,
-    //   },
-    //   "../templates/registrationsuccess.handlebars"
-    // );
 
     return;
   } catch (error) {
