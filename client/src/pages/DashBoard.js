@@ -124,7 +124,7 @@ const DashBoard = () => {
             <div className="card">
               <h1 className="sub__title">refer a friend</h1>
               <div className="note">
-                Refer people to DataReloaded and earn ₦500 immediately the
+                Refer people to QuickDataLoad and earn ₦500 immediately the
                 person upgrade his/her account to Reseller.
               </div>
               <button className="btn special__btn" onClick={copyReferralLink}>
