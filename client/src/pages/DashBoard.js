@@ -94,7 +94,7 @@ const DashBoard = () => {
           <section className="account__section " id="fundWallet">
             <div className="card">
               <h1 className="sub__title">
-                Account name <br /> DataReloaded-
+                Account name <br /> QuickDataLoad-
                 {user.userName && user.userName.substring(0, 10)}
               </h1>
               <div className="content">
