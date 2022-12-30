@@ -57,11 +57,7 @@ const register = async (req, res) => {
     await generateAccountNumber({ userName, email });
     const user = await User.findOne({ email });
     const token = user.createJWT();
-    const userTransaction = await Transaction.find({ trans_By: user._id })
-      .limit(10)
-      .sort("-createdAt");
     const allDataList = await Data.find();
-
     const MTN_SME_PRICE = allDataList
       .filter((e) => e.plan_network === "MTN")
       .map((e) => {
@@ -104,7 +100,7 @@ const register = async (req, res) => {
       newUser: user,
       user,
       token,
-      transactions: userTransaction,
+      transactions: [],
       isAdmin: user._id === process.env.ADMIN_ID ? true : false,
       subscriptionPlans: {
         MTN: MTN_SME_PRICE,
@@ -144,7 +140,6 @@ const login = async (req, res) => {
       email: user.email,
     });
   const token = user.createJWT();
-  const data = await Data.find();
   const isReseller = user.userType === "reseller";
   const isApiUser = user.userType === "api user";
 
