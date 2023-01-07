@@ -5,10 +5,10 @@ const buyAirtime = async ({ network, mobile_number, amount }) => {
   let networkId = "";
   let message = "";
   const availableNetworks = {
-    1: { id: 3, name: "AIRTEL" }, //AIRTEL
-    2: { id: 1, name: "MTN" }, //MTN
-    3: { id: 2, name: "GLO" }, //GLO
-    4: { id: 6, name: "9MOBILE" }, //9MOBILE
+    1: { id: 1, name: "MTN" },
+    2: { id: 2, name: "GLO" },
+    3: { id: 3, name: "AIRTEL" },
+    4: { id: 4, name: "9MOBILE" },
   };
   const isPlanExist = availableNetworks.hasOwnProperty(network);
   if (!isPlanExist) return { status: false, msg: "Invalid plan Id" };

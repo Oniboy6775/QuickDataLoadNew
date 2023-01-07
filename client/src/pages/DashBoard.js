@@ -18,7 +18,7 @@ const DashBoard = () => {
 
   const copyReferralLink = async () => {
     await window.navigator.clipboard.writeText(
-      `https://www.datareloaded.com/register/${user.userName}`
+      `https://www.quickdataload.com/register/${user.userName}`
     );
     toast.success("Referral link copied");
   };
