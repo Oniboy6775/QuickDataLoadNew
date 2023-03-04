@@ -74,9 +74,7 @@ function BuyAirtime() {
               disabled
               readOnly
               type="number"
-              value={
-                user.userType === "reseller" ? amount * 0.975 : amount * 0.98
-              }
+              value={user.userType === "reseller" ? amount * 1.0 : amount * 1.0}
             />
             <button
               className="btn btn-block"

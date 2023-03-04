@@ -11,8 +11,8 @@ const buyAirtime = async (req, res) => {
   } = req;
   const isReseller = userType === "reseller";
   const isApiUser = userType === "api user";
-  let amountToCharge = amount * 0.98;
-  if (isReseller || isApiUser) amountToCharge = amount * 0.975;
+  let amountToCharge = amount * 1.0;
+  if (isReseller || isApiUser) amountToCharge = amount * 1.0;
   const user = await User.findById(userId);
   if (!mobile_number || !amount || !network)
     return res.status(400).json({ msg: "All fields are required" });
