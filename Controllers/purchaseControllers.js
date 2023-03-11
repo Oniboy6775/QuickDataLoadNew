@@ -11,8 +11,8 @@ const buyAirtime = async (req, res) => {
   } = req;
   const isReseller = userType === "reseller";
   const isApiUser = userType === "api user";
-  let amountToCharge = amount * 1.0;
-  if (isReseller || isApiUser) amountToCharge = amount * 1.0;
+  let amountToCharge = amount * 0.98;
+  if (isReseller || isApiUser) amountToCharge = amount * 0.975;
   const user = await User.findById(userId);
   if (!mobile_number || !amount || !network)
     return res.status(400).json({ msg: "All fields are required" });
@@ -85,9 +85,10 @@ const buyData = async (req, res) => {
   let isSuccess = false;
 
   const { status, data, msg } = await BUYDATA({ ...req.body });
-  message = msg;
+
   isSuccess = status;
   if (status) {
+    console.log({ ...data });
     receipt = await DATA_RECEIPT({
       ...data,
       amountToCharge,
@@ -97,14 +98,14 @@ const buyData = async (req, res) => {
     });
   }
   if (isSuccess) {
-    res.status(200).json({ msg: message, receipt });
+    res.status(200).json({ msg, receipt });
   } else {
     await User.updateOne(
       { _id: userId },
       { $inc: { balance: +amountToCharge } }
     );
     return res.status(500).json({
-      msg: message || "Transaction failed",
+      msg: msg || "Transaction failed",
     });
   }
 };
